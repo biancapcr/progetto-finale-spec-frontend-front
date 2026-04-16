@@ -610,3 +610,114 @@ a {
   transform: scale(1.06);
   background-color: #b38a5a;
 }
+
+/************* COMPARE PAGE **************/
+/* bottone compare sulla card */
+.compare-btn {
+  position: absolute;
+  top: 56px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  color: #2e241f;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* pagina compare */
+.compare-page {
+  padding: 60px 0 80px;
+}
+
+.compare-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.compare-heading p {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #8f7257;
+  margin-bottom: 10px;
+}
+
+.compare-heading h2 {
+  font-size: 38px;
+  font-weight: 600;
+}
+
+/* griglia confronto */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* card confronto */
+.compare-card {
+  background-color: white;
+  border: 1px solid #eadccd;
+  padding: 24px;
+}
+
+.compare-card img {
+  width: 85%;
+  height: 460px;
+  object-fit: cover;
+  margin-bottom: 18px;
+}
+.compare-heading h2 {
+  font-size: 38px;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #2e241f;
+  font-family: "Playfair", serif;
+}
+.compare-card h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  font-family: Playfair, serif;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+.compare-brand {
+  font-size: 16px;
+  color: #6f6257;
+  margin-bottom: 20px;
+}
+
+.compare-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.compare-info p {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.5;
+  font-family: Playfair, serif;
+  font-size: 19px;
+}
+
+.compare-info span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #8a6a47;
+}
+
+@media (max-width: 900px) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+}

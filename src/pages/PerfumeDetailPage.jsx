@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
-function PerfumeDetailPage({ favorites, toggleFavorite }) {
+function PerfumeDetailPage({
+  favorites,
+  toggleFavorite,
+  compareItems,
+  toggleCompare,
+}) {
   // recupero dell'id dinamico dall'url
   const { id } = useParams();
 
@@ -69,6 +74,9 @@ function PerfumeDetailPage({ favorites, toggleFavorite }) {
   // controllo se il profumo è già nei preferiti
   const isFavorite = favorites.some((item) => item.id === perfume.id);
 
+  // controllo se il profumo è già nel comparatore
+  const isInCompare = compareItems.some((item) => item.id === perfume.id);
+
   return (
     <main className="container perfume-detail-page">
       {/* layout principale */}
@@ -115,7 +123,12 @@ function PerfumeDetailPage({ favorites, toggleFavorite }) {
               {isFavorite ? "remove from favorites" : "add to favorites"}
             </button>
 
-            <button className="secondary-btn">add to compare</button>
+            <button
+              className="secondary-btn"
+              onClick={() => toggleCompare(perfume)}
+            >
+              {isInCompare ? "remove from compare" : "add to compare"}
+            </button>
           </div>
         </section>
 

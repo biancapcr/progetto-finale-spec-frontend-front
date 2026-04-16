@@ -4,6 +4,7 @@ import MainLayout from "./layout/MainLayout";
 import HomePage from "./pages/HomePage";
 import PerfumeDetailPage from "./pages/PerfumeDetailPage";
 import FavoritesPanel from "./components/FavoritesPanel";
+import ComparePage from "./pages/ComparePage";
 
 function App() {
   // stato che contiene la lista dei profumi
@@ -24,18 +25,17 @@ function App() {
   // stato di apertura del pannello preferiti
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(true);
 
+  // stato del comparatore
+  const [compareItems, setCompareItems] = useState([]);
+
   // effetto eseguito al montaggio del componente
   useEffect(() => {
-    // chiamata GET all'endpoint per ottenere tutti i profumi
     fetch("http://localhost:3001/perfumes")
-      // conversione della risposta in json
       .then((res) => res.json())
-      // aggiornamento dello stato con i dati ricevuti
       .then((data) => {
         console.log(data);
         setPerfumes(data);
       })
-      // gestione errori
       .catch((err) => console.error(err));
   }, []);
 
@@ -47,6 +47,24 @@ function App() {
       setFavorites(favorites.filter((item) => item.id !== perfume.id));
     } else {
       setFavorites([...favorites, perfume]);
+    }
+  }
+
+  // funzione per aggiungere o rimuovere un profumo dal comparatore
+  function toggleCompare(perfume) {
+    const isAlreadyInCompare = compareItems.some(
+      (item) => item.id === perfume.id,
+    );
+
+    // rimozione se già presente
+    if (isAlreadyInCompare) {
+      setCompareItems(compareItems.filter((item) => item.id !== perfume.id));
+      return;
+    }
+
+    // aggiunta se ci sono meno di 2 elementi
+    if (compareItems.length < 2) {
+      setCompareItems([...compareItems, perfume]);
     }
   }
 
@@ -90,7 +108,6 @@ function App() {
 
   return (
     <MainLayout>
-      {/* pannello preferiti aperto */}
       {isFavoritesOpen && (
         <FavoritesPanel
           favorites={favorites}
@@ -99,7 +116,6 @@ function App() {
         />
       )}
 
-      {/* bottone floating quando il pannello è chiuso */}
       {!isFavoritesOpen && (
         <button
           className="favorites-floating-btn"
@@ -123,6 +139,8 @@ function App() {
               setSortOption={setSortOption}
               favorites={favorites}
               toggleFavorite={toggleFavorite}
+              compareItems={compareItems}
+              toggleCompare={toggleCompare}
             />
           }
         />
@@ -133,6 +151,18 @@ function App() {
             <PerfumeDetailPage
               favorites={favorites}
               toggleFavorite={toggleFavorite}
+              compareItems={compareItems}
+              toggleCompare={toggleCompare}
+            />
+          }
+        />
+
+        <Route
+          path="/compare"
+          element={
+            <ComparePage
+              compareItems={compareItems}
+              toggleCompare={toggleCompare}
             />
           }
         />

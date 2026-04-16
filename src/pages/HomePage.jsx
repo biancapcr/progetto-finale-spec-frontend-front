@@ -14,6 +14,8 @@ function HomePage({
   setSortOption,
   favorites,
   toggleFavorite,
+  compareItems,
+  toggleCompare,
 }) {
   return (
     <>
@@ -26,7 +28,6 @@ function HomePage({
             <h2>trending perfumes</h2>
           </div>
 
-          {/* barra controlli */}
           <div className="controls">
             <SearchBar
               searchQuery={searchQuery}
@@ -48,6 +49,8 @@ function HomePage({
                 perfume={perfume}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
+                compareItems={compareItems}
+                toggleCompare={toggleCompare}
               />
             ))}
           </div>
