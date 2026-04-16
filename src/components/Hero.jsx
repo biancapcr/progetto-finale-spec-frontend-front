@@ -8,7 +8,6 @@ function Hero() {
           explore elegant perfumes inspired by oriental notes, sweet accords and
           timeless femininity
         </p>
-        <button>shop now</button>
       </div>
     </section>
   );

@@ -13,6 +13,9 @@ function App() {
   // stato della barra di ricerca
   const [searchQuery, setSearchQuery] = useState("");
 
+  // stato della ricerca ritardata usata per il debounce
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+
   // stato del filtro categoria
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -47,6 +50,16 @@ function App() {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
+  // effetto per ritardare la ricerca
+  // aggiorna debouncedQuery solo dopo 500ms dall'ultima digitazione
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [searchQuery]);
+
   // funzione per aggiungere o rimuovere un profumo dai preferiti
   function toggleFavorite(perfume) {
     const isAlreadyFavorite = favorites.some((item) => item.id === perfume.id);
@@ -79,10 +92,10 @@ function App() {
   // copia dell'array originale
   let filteredPerfumes = [...perfumes];
 
-  // filtro per titolo
-  if (searchQuery) {
+  // filtro per titolo con ricerca ritardata
+  if (debouncedQuery) {
     filteredPerfumes = filteredPerfumes.filter((perfume) =>
-      perfume.title.toLowerCase().includes(searchQuery.toLowerCase()),
+      perfume.title.toLowerCase().includes(debouncedQuery.toLowerCase()),
     );
   }
 

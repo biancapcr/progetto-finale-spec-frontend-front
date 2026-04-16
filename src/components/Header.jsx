@@ -16,8 +16,7 @@ function Header() {
 
         <nav className="main-nav">
           <Link to="/">home</Link>
-          <Link to="/">women</Link>
-          <Link to="/">unisex</Link>
+          <Link to="/">-ˋˏ ༻❁༺ ˎˊ-</Link>
           <Link to="/compare">compare</Link>
         </nav>
       </header>
