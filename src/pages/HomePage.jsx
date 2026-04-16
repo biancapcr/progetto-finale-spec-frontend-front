@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Hero from "../components/Hero";
 import PerfumeCard from "../components/PerfumeCard";
 import SearchBar from "../components/SearchBar";
@@ -17,6 +19,23 @@ function HomePage({
   compareItems,
   toggleCompare,
 }) {
+  const navigate = useNavigate();
+
+  // stato che gestisce l'apertura del modal compare
+  const [showCompareModal, setShowCompareModal] = useState(false);
+
+  // apertura automatica del modal quando ci sono 2 profumi selezionati
+  // chiusura automatica se i profumi tornano meno di 2
+  useEffect(() => {
+    if (compareItems.length === 2) {
+      setShowCompareModal(true);
+    }
+
+    if (compareItems.length < 2) {
+      setShowCompareModal(false);
+    }
+  }, [compareItems]);
+
   return (
     <>
       <Hero />
@@ -56,6 +75,31 @@ function HomePage({
           </div>
         </section>
       </main>
+
+      {showCompareModal && compareItems.length === 2 && (
+        <div className="compare-overlay">
+          <div className="compare-modal">
+            <button
+              className="compare-close-btn"
+              onClick={() => setShowCompareModal(false)}
+            >
+              ×
+            </button>
+
+            <p>2 perfumes selected</p>
+            <h3>ready to compare?</h3>
+
+            <div className="compare-actions">
+              <button
+                className="primary-btn"
+                onClick={() => navigate("/compare")}
+              >
+                compare now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
