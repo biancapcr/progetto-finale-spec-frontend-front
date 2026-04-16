@@ -49,7 +49,7 @@ a {
   align-items: center;
   padding: 26px 5%;
   background-color: #fbf7f2;
-  border-bottom: 1px solid #e7d8c8;
+  border-bottom: 1px solid #c4bbb1;
 }
 
 /* logo */
@@ -303,7 +303,7 @@ a {
   object-fit: cover;
 }
 
-/* colonna centrale */
+/****** COLONNA CENTRALE ********/
 .detail-info-panel {
   background-color: #ffffff;
   border: 1px solid #c4bbb1;
@@ -312,7 +312,7 @@ a {
 }
 
 .detail-label {
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #080501;
@@ -323,6 +323,8 @@ a {
   font-size: 36px;
   margin-bottom: 12px;
   line-height: 1.1;
+  letter-spacing: 2px;
+  font-family: Playfair, serif;
 }
 
 .detail-brand {
@@ -332,10 +334,11 @@ a {
 }
 
 .detail-main-description {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.7;
   color: #5e5046;
   margin-bottom: 30px;
+  font-family: Playfair, serif;
 }
 
 .detail-meta {
@@ -349,14 +352,15 @@ a {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-size: 15px;
+  font-size: 18px;
+  font-family: Playfair, serif;
 }
 
 .detail-meta span {
-  font-size: 11px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #d7d2cd;
+  color: #6c6661;
 }
 
 .detail-actions {
@@ -385,10 +389,11 @@ a {
   color: #2e241f;
 }
 
-/* colonna destra */
+/****** COLONNA DESTRA *******/
 .detail-sidebar {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .sidebar-card {
@@ -398,7 +403,10 @@ a {
 }
 
 .related-card h4 {
-  font-size: 22px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-family: Playfair, serif;
+  font-weight: 400;
   margin-bottom: 18px;
   font-weight: 500;
 }
