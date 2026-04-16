@@ -9,7 +9,7 @@ function ComparePage({ compareItems, toggleCompare }) {
 
       {/* stato vuoto */}
       {compareItems.length === 0 && (
-        <p className="status-message">no perfumes selected for comparison</p>
+        <p className="status-message">No perfumes selected for comparison</p>
       )}
 
       {/* stato con un solo elemento */}
