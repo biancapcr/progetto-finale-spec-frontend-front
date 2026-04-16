@@ -5,69 +5,219 @@
   box-sizing: border-box;
 }
 
-/* body generale */
+/* stile generale */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #ffffff;
+  color: #1d1410;
 }
 
-/* titolo principale */
-h1 {
-  text-align: center;
-  margin: 20px 0;
+/* immagini */
+img {
+  display: block;
+  width: 100%;
 }
 
-/* contenitore principale */
+/* link */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* contenitore */
 .container {
-  max-width: 1200px;
+  width: 90%;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
-/* contenitore card */
+/* topbar */
+.topbar {
+  background-color: #1d1410;
+  color: #f6efe7;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* header */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 5%;
+  background-color: #fbf7f2;
+  border-bottom: 1px solid #e7d8c8;
+}
+
+/* logo */
+.logo h1 {
+  font-size: 45px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #2e241f;
+  font-family: "WindSong", cursive;
+  font-weight: 400;
+}
+
+/* nav */
+.main-nav {
+  display: flex;
+  gap: 28px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.main-nav a {
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: #b38a5a;
+}
+
+/* hero */
+.hero {
+  min-height: 75vh;
+  background-image:
+    linear-gradient(rgba(46, 36, 31, 0.35), rgba(46, 36, 31, 0.35)),
+    url("https://t4.ftcdn.net/jpg/05/56/90/13/360_F_556901330_u2u48dyBnK16UozWBrlMuNmkbR3HnubL.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 10% 5%;
+}
+
+/* contenuto hero */
+.hero-content {
+  max-width: 620px;
+  color: white;
+}
+
+.hero-subtitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+}
+
+.hero-content h2 {
+  font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  text-transform: capitalize;
+  font-family: "Mea Culpa", cursive;
+  font-weight: 400;
+}
+
+.hero-text {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 26px;
+  max-width: 520px;
+  letter-spacing: 3px;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.hero-content button {
+  border: none;
+  background-color: #b38a5a;
+  color: white;
+  padding: 14px 28px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hero-content button:hover {
+  background-color: #9c7447;
+}
+
+/* sezione prodotti */
+.products-section {
+  padding: 80px 0;
+}
+
+/* heading sezione */
+.section-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-heading p {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #8f7257;
+  margin-bottom: 10px;
+}
+
+.section-heading h2 {
+  font-size: 38px;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #2e241f;
+  font-family: "Playfair", serif;
+}
+
+/* griglia card */
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 24px;
 }
 
 /* card */
 .card {
-  width: 220px;
-  background-color: white;
-  border-radius: 12px;
+  width: 260px;
+  background-color: #ffffff;
+  border: 1px solid #eadccd;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-  /* animazione hover */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-/* effetto hover */
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
 }
 
-/* immagine */
+/* immagine card */
 .card img {
-  width: 100%;
-  height: 180px;
+  height: 280px;
   object-fit: cover;
 }
 
-/* contenuto card */
-.card h3 {
-  font-size: 16px;
-  margin: 10px;
+/* corpo card */
+.card-body {
+  padding: 18px;
 }
 
-.card p {
+.card-category {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #b38a5a;
+  margin-bottom: 10px;
+}
+
+.card-body h3 {
+  font-size: 19px;
+  margin-bottom: 8px;
+  color: #2e241f;
+}
+
+.card-brand {
   font-size: 14px;
-  margin: 0 10px 10px;
-  color: #666;
+  color: #6f6257;
 }
