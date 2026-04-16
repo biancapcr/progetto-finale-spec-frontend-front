@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import MainLayout from "./layout/MainLayout";
+import HomePage from "./pages/HomePage";
 
 function App() {
   // stato che contiene la lista dei profumi
@@ -12,7 +14,7 @@ function App() {
       .then((res) => res.json())
       // aggiornamento dello stato con i dati ricevuti
       .then((data) => {
-        console.log(data); // debug
+        console.log(data);
         setPerfumes(data);
       })
       // gestione errori
@@ -20,28 +22,9 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Perfumes</h1>
-
-      {/* contenitore delle card */}
-      <div className="card-container">
-        {perfumes.map((perfume) => (
-          <div className="card" key={perfume.id}>
-            {/* immagine del profumo */}
-            <img src={perfume.imageUrl} alt={perfume.title} />
-
-            {/* titolo */}
-            <h3>{perfume.title}</h3>
-
-            {/* categoria */}
-            <p>{perfume.category}</p>
-
-            {/* brand */}
-            <p>{perfume.brand}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <MainLayout>
+      <HomePage perfumes={perfumes} />
+    </MainLayout>
   );
 }
 
