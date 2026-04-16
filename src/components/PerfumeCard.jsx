@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 
-function PerfumeCard({ perfume }) {
+function PerfumeCard({ perfume, favorites, toggleFavorite }) {
+  // controllo se il profumo è già nei preferiti
+  const isFavorite = favorites.some((item) => item.id === perfume.id);
+
   return (
-    <Link to={`/perfumes/${perfume.id}`} className="card-link">
-      <div className="card">
+    <div className="card">
+      {/* bottone preferiti */}
+      <button className="favorite-btn" onClick={() => toggleFavorite(perfume)}>
+        {isFavorite ? "♥" : "♡"}
+      </button>
+
+      {/* link al dettaglio */}
+      <Link to={`/perfumes/${perfume.id}`} className="card-link">
         {/* immagine del profumo */}
         <img src={perfume.imageUrl} alt={perfume.title} />
 
@@ -13,8 +22,8 @@ function PerfumeCard({ perfume }) {
           <h3>{perfume.title}</h3>
           <p className="card-brand">{perfume.brand}</p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 

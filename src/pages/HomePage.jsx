@@ -12,6 +12,8 @@ function HomePage({
   setSelectedCategory,
   sortOption,
   setSortOption,
+  favorites,
+  toggleFavorite,
 }) {
   return (
     <>
@@ -41,7 +43,12 @@ function HomePage({
 
           <div className="card-container">
             {perfumes.map((perfume) => (
-              <PerfumeCard key={perfume.id} perfume={perfume} />
+              <PerfumeCard
+                key={perfume.id}
+                perfume={perfume}
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+              />
             ))}
           </div>
         </section>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
-function PerfumeDetailPage() {
+function PerfumeDetailPage({ favorites, toggleFavorite }) {
   // recupero dell'id dinamico dall'url
   const { id } = useParams();
 
@@ -31,14 +31,13 @@ function PerfumeDetailPage() {
       });
   }, [id]);
 
-  // fetch dei profumi correlati dopo aver ottenuto il profumo corrente
+  // fetch dei profumi correlati
   useEffect(() => {
     if (!perfume) return;
 
     fetch("http://localhost:3001/perfumes")
       .then((res) => res.json())
       .then((data) => {
-        // filtro per categoria uguale ed esclusione del profumo corrente
         const filteredRelated = data
           .filter(
             (item) =>
@@ -66,6 +65,9 @@ function PerfumeDetailPage() {
   if (error || !perfume) {
     return <p className="status-message">perfume not found</p>;
   }
+
+  // controllo se il profumo è già nei preferiti
+  const isFavorite = favorites.some((item) => item.id === perfume.id);
 
   return (
     <main className="container perfume-detail-page">
@@ -106,7 +108,13 @@ function PerfumeDetailPage() {
           </div>
 
           <div className="detail-actions">
-            <button className="primary-btn">add to favorites</button>
+            <button
+              className="primary-btn"
+              onClick={() => toggleFavorite(perfume)}
+            >
+              {isFavorite ? "remove from favorites" : "add to favorites"}
+            </button>
+
             <button className="secondary-btn">add to compare</button>
           </div>
         </section>

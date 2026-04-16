@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import HomePage from "./pages/HomePage";
 import PerfumeDetailPage from "./pages/PerfumeDetailPage";
+import FavoritesPanel from "./components/FavoritesPanel";
 
 function App() {
   // stato che contiene la lista dei profumi
@@ -16,6 +17,12 @@ function App() {
 
   // stato dell'ordinamento
   const [sortOption, setSortOption] = useState("");
+
+  // stato dei preferiti
+  const [favorites, setFavorites] = useState([]);
+
+  // stato di apertura del pannello preferiti
+  const [isFavoritesOpen, setIsFavoritesOpen] = useState(true);
 
   // effetto eseguito al montaggio del componente
   useEffect(() => {
@@ -31,6 +38,17 @@ function App() {
       // gestione errori
       .catch((err) => console.error(err));
   }, []);
+
+  // funzione per aggiungere o rimuovere un profumo dai preferiti
+  function toggleFavorite(perfume) {
+    const isAlreadyFavorite = favorites.some((item) => item.id === perfume.id);
+
+    if (isAlreadyFavorite) {
+      setFavorites(favorites.filter((item) => item.id !== perfume.id));
+    } else {
+      setFavorites([...favorites, perfume]);
+    }
+  }
 
   // copia dell'array originale
   let filteredPerfumes = [...perfumes];
@@ -72,6 +90,25 @@ function App() {
 
   return (
     <MainLayout>
+      {/* pannello preferiti aperto */}
+      {isFavoritesOpen && (
+        <FavoritesPanel
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+          setIsFavoritesOpen={setIsFavoritesOpen}
+        />
+      )}
+
+      {/* bottone floating quando il pannello è chiuso */}
+      {!isFavoritesOpen && (
+        <button
+          className="favorites-floating-btn"
+          onClick={() => setIsFavoritesOpen(true)}
+        >
+          ♥
+        </button>
+      )}
+
       <Routes>
         <Route
           path="/"
@@ -84,11 +121,21 @@ function App() {
               setSelectedCategory={setSelectedCategory}
               sortOption={sortOption}
               setSortOption={setSortOption}
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
             />
           }
         />
 
-        <Route path="/perfumes/:id" element={<PerfumeDetailPage />} />
+        <Route
+          path="/perfumes/:id"
+          element={
+            <PerfumeDetailPage
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+            />
+          }
+        />
       </Routes>
     </MainLayout>
   );
