@@ -6,11 +6,11 @@ function CategoryFilter({ selectedCategory, setSelectedCategory }) {
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
       >
-        <option value="">all categories</option>
-        <option value="sweet">sweet</option>
-        <option value="floral">floral</option>
-        <option value="citrus">citrus</option>
-        <option value="woody">woody</option>
+        <option value="">All categories</option>
+        <option value="sweet">Sweet</option>
+        <option value="floral">Floral</option>
+        <option value="citrus">Citrus</option>
+        <option value="woody">Woody</option>
       </select>
     </div>
   );

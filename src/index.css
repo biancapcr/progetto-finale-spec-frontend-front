@@ -272,3 +272,182 @@ a {
 .sort-box select:focus {
   border-color: #b38a5a;
 }
+
+/* link card */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/***** PAGINA DETTAGLIO ******/
+.perfume-detail-page {
+  padding: 50px 0 80px;
+}
+
+/* layout principale */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 320px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* colonna sinistra */
+.detail-gallery {
+  background-color: #ffffff;
+}
+
+.main-detail-image img {
+  width: 80%;
+  height: 520px;
+  object-fit: cover;
+}
+
+/* colonna centrale */
+.detail-info-panel {
+  background-color: #ffffff;
+  border: 1px solid #c4bbb1;
+  padding: 25px;
+  min-height: 80%;
+}
+
+.detail-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #080501;
+  margin-bottom: 10px;
+}
+
+.detail-info-panel h2 {
+  font-size: 36px;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+
+.detail-brand {
+  font-size: 18px;
+  color: #4f433a;
+  margin-bottom: 20px;
+}
+
+.detail-main-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5e5046;
+  margin-bottom: 30px;
+}
+
+.detail-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.detail-meta p {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 15px;
+}
+
+.detail-meta span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #d7d2cd;
+}
+
+.detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 14px 18px;
+  border: 1px solid #2e241f;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.primary-btn {
+  background-color: #111;
+  color: white;
+}
+
+.secondary-btn {
+  background-color: white;
+  color: #2e241f;
+}
+
+/* colonna destra */
+.detail-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #c4bbb1;
+}
+
+.related-card h4 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.related-mini-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.related-mini-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.related-mini-item img {
+  width: 70px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.related-mini-text p {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #463a32;
+}
+
+.related-mini-text span {
+  font-size: 12px;
+  color: #7a6a5d;
+}
+
+/* messaggi di stato */
+.status-message {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 18px;
+}
+
+/* responsive */
+@media (max-width: 1200px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .main-detail-image img {
+    height: 460px;
+  }
+}

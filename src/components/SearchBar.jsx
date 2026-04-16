@@ -4,7 +4,7 @@ function SearchBar({ searchQuery, setSearchQuery }) {
       {/* input di ricerca per titolo */}
       <input
         type="text"
-        placeholder="search by title..."
+        placeholder="Search by title..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <>
@@ -9,14 +11,18 @@ function Header() {
       {/* intestazione principale */}
       <header className="main-header">
         <div className="logo">
-          <h1>Velour</h1>
+          {/* cliccando il logo torni alla home */}
+          <Link to="/">
+            <h1>Velour</h1>
+          </Link>
         </div>
 
         <nav className="main-nav">
-          <a href="#">home</a>
-          <a href="#">women</a>
-          <a href="#">unisex</a>
-          <a href="#">brands</a>
+          {/* link gestiti da react router */}
+          <Link to="/">home</Link>
+          <Link to="/">women</Link>
+          <Link to="/">unisex</Link>
+          <Link to="/">brands</Link>
         </nav>
       </header>
     </>

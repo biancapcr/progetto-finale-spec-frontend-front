@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import HomePage from "./pages/HomePage";
+import PerfumeDetailPage from "./pages/PerfumeDetailPage";
 
 function App() {
   // stato che contiene la lista dei profumi
@@ -33,7 +35,7 @@ function App() {
   // copia dell'array originale
   let filteredPerfumes = [...perfumes];
 
-  // filtro per titolo (search)
+  // filtro per titolo
   if (searchQuery) {
     filteredPerfumes = filteredPerfumes.filter((perfume) =>
       perfume.title.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -48,34 +50,46 @@ function App() {
     );
   }
 
-  // ordinamento
+  // ordinamento per titolo crescente
   if (sortOption === "title-asc") {
     filteredPerfumes.sort((a, b) => a.title.localeCompare(b.title));
   }
 
+  // ordinamento per titolo decrescente
   if (sortOption === "title-desc") {
     filteredPerfumes.sort((a, b) => b.title.localeCompare(a.title));
   }
 
+  // ordinamento per categoria crescente
   if (sortOption === "category-asc") {
     filteredPerfumes.sort((a, b) => a.category.localeCompare(b.category));
   }
 
+  // ordinamento per categoria decrescente
   if (sortOption === "category-desc") {
     filteredPerfumes.sort((a, b) => b.category.localeCompare(a.category));
   }
 
   return (
     <MainLayout>
-      <HomePage
-        perfumes={filteredPerfumes}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        sortOption={sortOption}
-        setSortOption={setSortOption}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              perfumes={filteredPerfumes}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              sortOption={sortOption}
+              setSortOption={setSortOption}
+            />
+          }
+        />
+
+        <Route path="/perfumes/:id" element={<PerfumeDetailPage />} />
+      </Routes>
     </MainLayout>
   );
 }
