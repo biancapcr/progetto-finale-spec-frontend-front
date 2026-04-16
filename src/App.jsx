@@ -27,7 +27,10 @@ function App() {
         {perfumes.map((perfume) => (
           <div className="card" key={perfume.id}>
             {/* immagine del profumo */}
-            <img src={perfume.imageUrl} alt={perfume.title} />
+            <img
+              src={perfume.imageUrl || "https://via.placeholder.com/200"}
+              alt={perfume.title}
+            />
 
             {/* titolo */}
             <h3>{perfume.title}</h3>
