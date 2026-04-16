@@ -20,7 +20,10 @@ function App() {
   const [sortOption, setSortOption] = useState("");
 
   // stato dei preferiti
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem("favorites");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   // stato di apertura del pannello preferiti
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(true);
@@ -38,6 +41,11 @@ function App() {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  // effetto per salvare i preferiti nel localStorage ogni volta che cambiano
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   // funzione per aggiungere o rimuovere un profumo dai preferiti
   function toggleFavorite(perfume) {
