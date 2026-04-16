@@ -78,7 +78,7 @@ a {
   color: #b38a5a;
 }
 
-/* hero */
+/**** HERO *****/
 .hero {
   min-height: 75vh;
   background-image:
@@ -139,7 +139,7 @@ a {
   background-color: #9c7447;
 }
 
-/* sezione prodotti */
+/***** SEZIONE PRODOTTI ******/
 .products-section {
   padding: 80px 0;
 }
@@ -166,6 +166,7 @@ a {
   font-family: "Playfair", serif;
 }
 
+/***** CARD ******/
 /* griglia card */
 .card-container {
   display: flex;
@@ -179,23 +180,32 @@ a {
   width: 260px;
   background-color: #ffffff;
   border: 1px solid #eadccd;
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+
+  /* no transform dalla transizione */
+  transition: box-shadow 0.2s ease;
 }
 
+/* hover card */
 .card:hover {
-  transform: translateY(-6px);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
 }
 
 /* immagine card */
 .card img {
   height: 280px;
+  width: 100%;
   object-fit: cover;
+
+  /* animazione zoom */
+  transition: transform 0.3s ease;
+}
+
+/* zoom immagine al passaggio */
+.card:hover img {
+  transform: scale(1.08);
 }
 
 /* corpo card */
@@ -215,9 +225,50 @@ a {
   font-size: 19px;
   margin-bottom: 8px;
   color: #2e241f;
+  font-family: "Playfair", serif;
 }
 
 .card-brand {
-  font-size: 14px;
+  font-size: 12px;
+  letter-spacing: 2px;
   color: #6f6257;
+}
+
+/**** SEZIONE CONTROLLI ******/
+/* contenitore dei controlli */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+/* box dei controlli */
+.search-box,
+.filter-box,
+.sort-box {
+  min-width: 220px;
+}
+
+/* input e select */
+.search-box input,
+.filter-box select,
+.sort-box select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e0d2c2;
+  border-radius: 0;
+  background-color: white;
+  color: #2e241f;
+  font-size: 17px;
+  font-family: Playfair, serif;
+  outline: none;
+}
+
+/* focus input e select */
+.search-box input:focus,
+.filter-box select:focus,
+.sort-box select:focus {
+  border-color: #b38a5a;
 }
