@@ -44,7 +44,6 @@ function HomePage({
         <section className="products-section">
           <div className="section-heading">
             <p>our collection</p>
-            <h2>trending perfumes</h2>
           </div>
 
           <div className="controls">
